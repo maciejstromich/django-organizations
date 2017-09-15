@@ -3,7 +3,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.apps import apps
-from django.utils.importlib import import_module
+from importlib import import_module
 from django.utils.translation import ugettext_lazy as _
 
 from .base import OrganizationBase, OrganizationUserBase, OrganizationOwnerBase
