@@ -37,7 +37,7 @@ def get_user_model():
     builtin until Django 1.5.
     """
     try:
-        klass = apps.get_model(USER_MODEL.split('.')[0], USER_MODEL.split('.')[1])
+        klass = apps.get_model(USER_MODEL.split('.')[0], USER_MODEL.split('.')[1], require_ready=False)
     except:
         raise ImproperlyConfigured("Your AUTH_USER_MODEL class '{0}'"
                 " is improperly defined".format(USER_MODEL))
