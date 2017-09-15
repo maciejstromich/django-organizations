@@ -2,7 +2,6 @@ from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.apps import apps
 from importlib import import_module
 from django.utils.translation import ugettext_lazy as _
 
@@ -29,22 +28,6 @@ try:
 except:
     raise ImproperlyConfigured("Your TimeStampedBaseModel class, {0},"
             " is improperly defined".format(ORGS_TIMESTAMPED_MODEL))
-
-
-def get_user_model():
-    """
-    Returns the chosen user model as a class. This functionality won't be
-    builtin until Django 1.5.
-    """
-    try:
-        klass = apps.get_model(USER_MODEL.split('.')[0], USER_MODEL.split('.')[1], require_ready=False)
-    except:
-        raise ImproperlyConfigured("Your AUTH_USER_MODEL class '{0}'"
-                " is improperly defined".format(USER_MODEL))
-    if klass is None:
-        raise ImproperlyConfigured("Your AUTH_USER_MODEL class '{0}'"
-                " is not installed".format(USER_MODEL))
-    return klass
 
 
 class Organization(OrganizationBase, TimeStampedModel):
