@@ -49,7 +49,7 @@ setup(
         'Framework :: Django',
     ],
     install_requires=[
-        'Django>=1.4.2,<1.11',
+        'Django>=1.4.2,<1.12',
     ],
     test_suite='tests',
     include_package_data=True,
